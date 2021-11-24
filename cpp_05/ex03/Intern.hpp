@@ -9,7 +9,7 @@ class Form;
 class Intern {
 private:
 	std::string _form_name[3];
-	Form (Intern::*_formPrint[4])(std::string target);
+	Form *(Intern::*_formPrint[4])(std::string target);
 public:
 	Intern();
 	Intern(const Intern& copy);
