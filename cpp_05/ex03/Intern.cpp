@@ -8,6 +8,7 @@ Intern::Intern() {
 	_formPrint[0] = &Intern::ShrubberyCreationForm_intern;
 	_formPrint[1] = &Intern::RobotomyRequestForm_intern;
 	_formPrint[2] = &Intern::PresidentialPardonForm_intern;
+	_formPrint[3] = FormException;
 }
 
 Intern::Intern(const Intern& copy) { *this = copy; }
@@ -36,6 +37,8 @@ Form Intern::*ShrubberyCreationForm_intern(std::string target) { return (new Shr
 Form Intern::*RobotomyRequestForm_intern(std::string target) { return (new RobotomyRequestForm(target)); }
 
 Form Intern::*PresidentialPardonForm_intern(std::string target) { return (new PresidentialPardonForm(target)); }
+
+Form Intern::*FormException(std::string target) { target = ""; throw FormNotFound(); return 0; }
 
 Intern::FormNotFound::FormNotFound() {}
 const char* Intern::FormNotFound::what() const throw () { return "Form not found!"; }

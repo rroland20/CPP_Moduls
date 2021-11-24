@@ -20,6 +20,7 @@ public:
 	Form *ShrubberyCreationForm_intern(std::string target);
 	Form *RobotomyRequestForm_intern(std::string target);
 	Form *PresidentialPardonForm_intern(std::string target);
+	Form *FormException(std::string target);
 
 	class FormNotFound : public std::exception
 	{
