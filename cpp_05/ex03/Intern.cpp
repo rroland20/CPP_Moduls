@@ -29,16 +29,16 @@ Form *Intern::makeForm(std::string &name, std::string &target) {
 	int i = 0;
 	while (i < 3 && _form_name[i] != name)
 		i++;
-	return _formPrint[i](target);
+	return (this->*_formPrint[i])(target);
 }
 
-Form Intern::*ShrubberyCreationForm_intern(std::string target) { return (new ShrubberyCreationForm(target)); }
+Form *Intern::ShrubberyCreationForm_intern(std::string target) { return (new ShrubberyCreationForm(target)); }
 
-Form Intern::*RobotomyRequestForm_intern(std::string target) { return (new RobotomyRequestForm(target)); }
+Form *Intern::RobotomyRequestForm_intern(std::string target) { return (new RobotomyRequestForm(target)); }
 
-Form Intern::*PresidentialPardonForm_intern(std::string target) { return (new PresidentialPardonForm(target)); }
+Form *Intern::PresidentialPardonForm_intern(std::string target) { return (new PresidentialPardonForm(target)); }
 
-Form Intern::*FormException(std::string target) { target = ""; throw FormNotFound(); return 0; }
+Form *Intern::FormException(std::string target) { target = ""; throw FormNotFound(); return 0; }
 
 Intern::FormNotFound::FormNotFound() {}
 const char* Intern::FormNotFound::what() const throw () { return "Form not found!"; }
