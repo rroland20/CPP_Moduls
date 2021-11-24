@@ -8,7 +8,7 @@ Intern::Intern() {
 	_formPrint[0] = &Intern::ShrubberyCreationForm_intern;
 	_formPrint[1] = &Intern::RobotomyRequestForm_intern;
 	_formPrint[2] = &Intern::PresidentialPardonForm_intern;
-	_formPrint[3] = FormException;
+	_formPrint[3] = &Intern::FormException;
 }
 
 Intern::Intern(const Intern& copy) { *this = copy; }
