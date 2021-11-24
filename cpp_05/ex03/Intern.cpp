@@ -25,7 +25,7 @@ Intern	&Intern::operator=(const Intern& other) {
 
 Intern::~Intern() {}
 
-Form *Intern::makeForm(std::string &name, std::string &target) {
+Form *Intern::makeForm(const std::string &name, const std::string &target) {
 	int i = 0;
 	while (i < 3 && _form_name[i] != name)
 		i++;

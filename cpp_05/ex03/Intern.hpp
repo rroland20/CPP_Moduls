@@ -16,7 +16,7 @@ public:
 	Intern	&operator=(const Intern& other);
 	virtual ~Intern();
 
-	Form *makeForm(std::string &name, std::string &target);
+	Form *makeForm(const std::string &name, const std::string &target);
 	Form *ShrubberyCreationForm_intern(std::string target);
 	Form *RobotomyRequestForm_intern(std::string target);
 	Form *PresidentialPardonForm_intern(std::string target);
