@@ -1,10 +1,10 @@
-NAME = Bureaucrat
+NAME = convert
 
-SOURCE = Bureaucrat.cpp main.cpp
+SOURCE = main.cpp Convert.cpp
 
 OBJ_DIR = .obj
 
-HDR = Bureaucrat.hpp
+HDR = Convert.hpp
 
 FLAGS = -Wall -Wextra -Werror --std=c++98
 
@@ -17,9 +17,12 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o:%.cpp $(HDR)
 	@mkdir -p $(OBJ_DIR)
-	@clang++ -c $(FLAGS) $< -o $@
+	@clang++ -c $(FLAGS) $<
+
 clean:
 	@rm -rf $(OBJ_DIR)
+
 fclean: clean
 	@rm -rf $(NAME)
+
 re: fclean all

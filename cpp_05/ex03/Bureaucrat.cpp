@@ -26,7 +26,7 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &a) {
 
 void Bureaucrat::checkGrade() {
 	if (_grade < 1)
-		throw GradeTooHighException();
+		throw "qwe";
 	else if (_grade > 150)
 		throw GradeTooLowException();
 }

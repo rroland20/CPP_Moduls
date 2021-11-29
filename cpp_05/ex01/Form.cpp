@@ -50,4 +50,4 @@ Form::GradeTooLowException::GradeTooLowException() {}
 const char* Form::GradeTooLowException::what() const throw () { return "Too low grade!"; }
 
 Form::FormIsAlreadySignedException::FormIsAlreadySignedException() {}
-const char* Form::FormIsAlreadySignedException::what() const throw () { return "The form is already signed!";}
+const char* Form::FormIsAlreadySignedException::what() const throw () { return "The form is already signed!"; }

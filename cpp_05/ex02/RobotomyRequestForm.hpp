@@ -5,6 +5,8 @@ class Bureaucrat;
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include <ctime>
+#include <cstdlib>
 
 class RobotomyRequestForm : public Form {
 private:

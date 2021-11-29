@@ -19,3 +19,4 @@ public:
 	void execute(Bureaucrat const & executor) const;
 	void execAction() const;
 };
+1 t 2 3 t

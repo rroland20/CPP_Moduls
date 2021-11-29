@@ -2,21 +2,27 @@ NAME = Bureaucrat
 
 SOURCE = Bureaucrat.cpp main.cpp Form.cpp
 
+OBJ_DIR = .obj
+
 HDR = Bureaucrat.hpp Form.hpp
 
 FLAGS = -Wall -Wextra -Werror --std=c++98
 
-OBJ = $(SOURCE:.cpp=.o)
+OBJ = $(addprefix $(OBJ_DIR)/,$(SOURCE:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@clang++ $(SOURCE) -o $(NAME)
 
-%.o:%.cpp $(HDR)
-	@clang++ -c $(FLAGS) $<
+$(OBJ_DIR)/%.o:%.cpp $(HDR)
+	@mkdir -p $(OBJ_DIR)
+	@clang++ -c $(FLAGS) $< -o $@
+
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_DIR)
+
 fclean: clean
 	@rm -rf $(NAME)
+
 re: fclean all

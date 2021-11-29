@@ -32,7 +32,7 @@ public:
 	public:
 		GradeTooHighException();
 		virtual const char* what() const throw ();
-		virtual ~GradeTooHighException() throw () {} ;
+		virtual ~GradeTooHighException() throw () {}
 	};
 	class GradeTooLowException : public std::exception {
 	public:
@@ -44,13 +44,13 @@ public:
 	public:
 		FormIsAlreadySignedException();
 		virtual const char* what() const throw ();
-		virtual ~FormIsAlreadySignedException() throw () {} ;
+		virtual ~FormIsAlreadySignedException() throw () {}
 	};
 	class FormIsNotSignedException : public std::exception {
 	public:
 		FormIsNotSignedException();
 		virtual const char* what() const throw ();
-		virtual ~FormIsNotSignedException() throw () {} ;
+		virtual ~FormIsNotSignedException() throw () {}
 	};
 };
 

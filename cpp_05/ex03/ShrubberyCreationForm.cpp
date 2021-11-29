@@ -21,7 +21,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 void ShrubberyCreationForm::execAction() const {
 	std::ofstream file_out;
 
-	file_out.open(_target + "_shrubbery", std::ios::app);
+	file_out.open((_target + "_shrubbery"), std::ios::app);
 	if (!file_out.is_open()) {
 		std::cout << "Error open file: " << _target << "_shrubbery" << std::endl;
 		return ;

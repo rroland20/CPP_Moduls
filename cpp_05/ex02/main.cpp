@@ -36,6 +36,7 @@ int main() {
 		c.gradeUp(10);
 		c.signForm(*robot);
 		c.executeForm(*robot);
+		delete robot;
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;

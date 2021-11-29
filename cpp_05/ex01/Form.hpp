@@ -28,19 +28,19 @@ public:
 	public:
 		GradeTooHighException();
 		virtual const char* what() const throw ();
-		virtual ~GradeTooHighException() throw () {} ;
+		virtual ~GradeTooHighException() throw () {}
 	};
 	class GradeTooLowException : public std::exception {
 	public:
 		GradeTooLowException();
 		virtual const char* what() const throw ();
-		virtual ~GradeTooLowException() throw () {};
+		virtual ~GradeTooLowException() throw () {}
 	};
 	class FormIsAlreadySignedException : public std::exception {
 	public:
 		FormIsAlreadySignedException();
 		virtual const char* what() const throw ();
-		virtual ~FormIsAlreadySignedException() throw () {} ;
+		virtual ~FormIsAlreadySignedException() throw () {}
 	};
 };
 

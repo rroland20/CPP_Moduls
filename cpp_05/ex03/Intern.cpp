@@ -26,9 +26,8 @@ Intern	&Intern::operator=(const Intern& other) {
 Intern::~Intern() {}
 
 Form *Intern::makeForm(const std::string &name, const std::string &target) {
-	int i = 0;
-	while (i < 3 && _form_name[i] != name)
-		i++;
+	int	i;
+	for (i = 0; i < 3 && _form_name[i] != name; ++i);
 	return (this->*_formPrint[i])(target);
 }
 
@@ -38,7 +37,7 @@ Form *Intern::RobotomyRequestForm_intern(std::string target) { return (new Robot
 
 Form *Intern::PresidentialPardonForm_intern(std::string target) { return (new PresidentialPardonForm(target)); }
 
-Form *Intern::FormException(std::string target) { target = ""; throw FormNotFound(); return 0; }
+Form *Intern::FormException(std::string target) { (void)target; throw FormNotFound(); }
 
 Intern::FormNotFound::FormNotFound() {}
 const char* Intern::FormNotFound::what() const throw () { return "Form not found!"; }
