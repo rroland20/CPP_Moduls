@@ -17,7 +17,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o:%.cpp $(HDR)
 	@mkdir -p $(OBJ_DIR)
-	@clang++ -c $(FLAGS) $<
+	@clang++ -c $(FLAGS) $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)

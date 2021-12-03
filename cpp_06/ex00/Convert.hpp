@@ -1,9 +1,12 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #include <string>
-using ::std::stod;
+#include <cstdlib>
+#include <stdint.h>
+
 class Convert {
 private:
 	std::string _str;
@@ -20,8 +23,7 @@ public:
 	virtual ~Convert();
 
 	int typeDefinition();
-	void printNan();
-	void printInf(int i);
+	void printNanInf();
 	void print();
 	void castChar();
 	void castInt();

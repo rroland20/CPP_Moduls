@@ -1,10 +1,10 @@
-NAME = Serialization
+NAME = Identify
 
-SOURCE = main.cpp Serialization.cpp
+SOURCE = main.cpp Base.cpp
 
 OBJ_DIR = .obj
 
-HDR = Serialization.hpp
+HDR = Base.hpp
 
 FLAGS = -Wall -Wextra -Werror --std=c++98
 

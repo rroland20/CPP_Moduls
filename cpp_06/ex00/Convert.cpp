@@ -4,24 +4,17 @@ Convert::Convert(const std::string &str)
 	: _str(str), _char(0), _int(0), _float(0.0f), _double(0.0) {
 	switch (typeDefinition())
 	{
-	case 0:
-		printNan();
-		break;
-	case 1:
-		if (_str[0] == '+')
-			printInf(1);
-		else
-			printInf(0);
-		break ;
-	case -1:
-		throw NotNum();
-	default:
-		_double = std::atof(str.c_str());
-		// std::cout << _double << std::endl;
-		castChar();
-		castInt();
-		castFloat();
-		castDouble();
+		case 0:
+			printNanInf();
+			break;
+		case -1:
+			throw NotNum();
+		default:
+			_double = std::atof(str.c_str());
+			castChar();
+			castInt();
+			castFloat();
+			castDouble();
 	}
 
 }
@@ -42,10 +35,8 @@ Convert	&Convert::operator=(const Convert& other) {
 Convert::~Convert() {}
 
 int Convert::typeDefinition() {
-	if (_str == "nan" || _str == "nanf")
+	if (_str == "nan" || _str == "nanf" || _str == "-inf" || _str == "+inf" || _str == "-inff" || _str == "+inff")
 		return 0;
-	else if (_str == "-inf" || _str == "+inf" || _str == "-inff" || _str == "+inff")
-		return 1;
 	for (unsigned long i = 0; i < _str.length(); ++i)
 		if (_str[i] > '9' || _str[i] < '0')
 			if (_str[i] != '.' && _str[i] != 'f')
@@ -55,24 +46,12 @@ int Convert::typeDefinition() {
 	return 2;
 }
 
-void Convert::printNan() {
+void Convert::printNanInf() {
+	_double = std::atof(_str.c_str());
 	std::cout << "char: imposible" << std::endl;
 	std::cout << "int: imposible" << std::endl;
-	std::cout << "float: nanf" << std::endl;
-	std::cout << "double: nan" << std::endl;
-}
-
-void Convert::printInf(int i) {
-	std::cout << "char: imposible" << std::endl;
-	std::cout << "int: imposible" << std::endl;
-	if (i) {
-		std::cout << "float: +inff" << std::endl;
-		std::cout << "double: +inf" << std::endl;
-	}
-	else {
-		std::cout << "float: -inff" << std::endl;
-		std::cout << "double: -inf" << std::endl;
-	}
+	std::cout << "float: " << static_cast<float>(_double) << "f" << std::endl;
+	std::cout << "double: " << _double << std::endl;
 }
 
 void Convert::castChar() {
@@ -97,23 +76,17 @@ void Convert::castInt() {
 }
 
 void Convert::castFloat() {
-	float tmp;
-
-	tmp = ceil(_double * 10) / 10.0f;
-	if (int(tmp * 10) % 10 == 0)
-		std::cout << "float: " << _double << ".0f" << std::endl;
+	if (_double - floor(_double) > 0.0f)
+		std::cout << "float: " << std::setprecision(309) << _double << "f" << std::endl;
 	else
-		std::cout << "float: " << _double << "f" << std::endl;
+		std::cout << "float: " << std::setprecision(309) << _double << ".0f" << std::endl;
 }
 
 void Convert::castDouble() {
-	float tmp;
-
-	tmp = ceil(_double * 10) / 10.0f;
-	if (int(tmp * 10) % 10 == 0)
-		std::cout << "double: " << _double << ".0" << std::endl;
+	if (_double - floor(_double) > 0.0f)
+		std::cout << "double: " << std::setprecision(309) << _double << std::endl;
 	else
-		std::cout << "double: " << _double << std::endl;
+		std::cout << "double: " << std::setprecision(309) << _double << ".0" << std::endl;
 }
 
 Convert::NotNum::NotNum() {}
