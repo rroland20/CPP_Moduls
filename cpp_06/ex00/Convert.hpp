@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <cmath>
-
+#include <string>
+using ::std::stod;
 class Convert {
 private:
 	std::string _str;
@@ -10,6 +11,7 @@ private:
 	int _int;
 	float _float;
 	double _double;
+	long int _long;
 	Convert();
 public:
 	Convert(const std::string &str);

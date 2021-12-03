@@ -16,8 +16,12 @@ Convert::Convert(const std::string &str)
 	case -1:
 		throw NotNum();
 	default:
+		_double = std::atof(str.c_str());
+		// std::cout << _double << std::endl;
 		castChar();
 		castInt();
+		castFloat();
+		castDouble();
 	}
 
 }
@@ -42,8 +46,12 @@ int Convert::typeDefinition() {
 		return 0;
 	else if (_str == "-inf" || _str == "+inf" || _str == "-inff" || _str == "+inff")
 		return 1;
-	else if (!(_str.find('f', _str[_str.length() - 1])) && !(_str.find('.')))
-		 return -1;
+	for (unsigned long i = 0; i < _str.length(); ++i)
+		if (_str[i] > '9' || _str[i] < '0')
+			if (_str[i] != '.' && _str[i] != 'f')
+				return -1;
+	if (static_cast<int>(_str.find("f")) != -1 && (_str[_str.length() - 1] != 'f' || _str.rfind("f") != _str.find("f") || static_cast<int>(_str.find(".")) == -1))
+		return -1;
 	return 2;
 }
 
@@ -68,37 +76,44 @@ void Convert::printInf(int i) {
 }
 
 void Convert::castChar() {
-	if (std::atoi(_str.c_str()) <= 32 || std::atoi(_str.c_str()) >= 127)
-		std::cout << "char: Non displayable" << std::endl;
+	if (_double <= 32 || _double >= 127)
+		if (_double < 0 || _double > 128)
+			std::cout << "char: imposible" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 	else {
-		_char = static_cast<float>(std::atoi(_str.c_str()));
+		_char = static_cast<char>(_double);
 		std::cout << "char: \'" << _char << "\'" << std::endl;
 	}
 }
 
 void Convert::castInt() {
-	std::cout << "asdasd - " << std::isdigit(static_cast<unsigned char>(_str[0])) << std::endl;
-	if (std::atoi(_str.c_str()) < -2147483648 || std::atoi(_str.c_str()) > 2147483647)
+	if (std::atol(_str.c_str()) < INT32_MIN || std::atol(_str.c_str()) > INT32_MAX)
 		std::cout << "int: imposible" << std::endl;
 	else {
-		_int = static_cast<float>(std::atoi(_str.c_str()));
+		_int = static_cast<int>(std::atoi(_str.c_str()));
 		std::cout << "int: " << _int << std::endl;
 	}
 }
 
 void Convert::castFloat() {
+	float tmp;
 
+	tmp = ceil(_double * 10) / 10.0f;
+	if (int(tmp * 10) % 10 == 0)
+		std::cout << "float: " << _double << ".0f" << std::endl;
+	else
+		std::cout << "float: " << _double << "f" << std::endl;
 }
 
 void Convert::castDouble() {
+	float tmp;
 
-}
-
-
-void Convert::print() {
-	std::cout << "char: \'" << _char << "\'" << std::endl;
-	std::cout << "float: " << _float << std::endl;
-	std::cout << "double: " << _double << std::endl;
+	tmp = ceil(_double * 10) / 10.0f;
+	if (int(tmp * 10) % 10 == 0)
+		std::cout << "double: " << _double << ".0" << std::endl;
+	else
+		std::cout << "double: " << _double << std::endl;
 }
 
 Convert::NotNum::NotNum() {}
