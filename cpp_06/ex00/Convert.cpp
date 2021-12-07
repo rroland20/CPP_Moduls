@@ -77,16 +77,16 @@ void Convert::castInt() {
 
 void Convert::castFloat() {
 	if (_double - floor(_double) > 0.0f)
-		std::cout << "float: " << std::setprecision(309) << _double << "f" << std::endl;
+		std::cout << "float: " << std::setprecision(15) << _double << "f" << std::endl;
 	else
-		std::cout << "float: " << std::setprecision(309) << _double << ".0f" << std::endl;
+		std::cout << "float: " << std::setprecision(15) << _double << ".0f" << std::endl;
 }
 
 void Convert::castDouble() {
 	if (_double - floor(_double) > 0.0f)
-		std::cout << "double: " << std::setprecision(309) << _double << std::endl;
+		std::cout << "double: " << std::setprecision(15) << _double << std::endl;
 	else
-		std::cout << "double: " << std::setprecision(309) << _double << ".0" << std::endl;
+		std::cout << "double: " << std::setprecision(15) << _double << ".0" << std::endl;
 }
 
 Convert::NotNum::NotNum() {}

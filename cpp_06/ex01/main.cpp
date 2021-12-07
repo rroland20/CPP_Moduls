@@ -5,10 +5,9 @@ int main() {
 	Data *n;
 	uintptr_t c;
 
-	data.a = 10;
-	data.b = 15;
+	data.num = 10;
+	data.str = "Hello";
 	c = serialize(&data);
-	std::cout << &c << std::endl;
 	n = deserialize(c);
-	std::cout << n->a << std::endl << n->b << std::endl;
+	std::cout << n->num << std::endl << n->str << std::endl;
 }
