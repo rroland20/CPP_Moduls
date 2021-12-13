@@ -47,6 +47,36 @@ int main(int, char**)
 	{
 		numbers[i] = rand();
 	}
-	delete [] mirror;//
+	delete [] mirror;
 	return 0;
 }
+
+// int main() {
+// 	Array<int> arr(5);
+// 	srand(time(NULL));
+// 	for (int i = 0; i < 5; ++i)
+// 	{
+// 		const int value = rand();
+// 		arr[i] = value;
+// 		std::cout << arr[i] << std::endl;
+// 	}
+// 	std::cout << "---------------------------" << std::endl;
+// 	try
+// 	{
+// 		Array<char *> r(0);
+// 	}
+// 	catch(const std::exception& e)
+// 	{
+// 		std::cerr << e.what() << '\n';
+// 	}
+// 	std::cout << "---------------------------" << std::endl;
+// 	try
+// 	{
+// 		Array<char *> str(2);
+// 		str[-2] = NULL;
+// 	}
+// 	catch(const std::exception& e)
+// 	{
+// 		std::cerr << e.what() << '\n';
+// 	}
+// }
